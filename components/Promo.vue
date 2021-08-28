@@ -7,48 +7,48 @@
       <button class="promo-left__btn">Start Watching</button>
     </div>
     <div class="promo-right">
-      <carousel
-        :per-page="2"
-        :navigate-to="someLocalProperty"
-        :mouse-drag="true"
+      <VueSlickCarousel
+        :slidesToScroll="2"
+        :slidesToShow="2"
+        :arrows="false"
+        :dots="true"
       >
-        <slide>
+        <div>
+          <img
+            src="https://image.tmdb.org/t/p/w500//lq68Z5htr1bjPd8X0U3PBZRcUij.jpg"
+            alt="movie jpg"
+          />
+        </div>
+        <div>
           <img
             src="https://image.tmdb.org/t/p/w500//ic0intvXZSfBlYPIvWXpU1ivUCO.jpg"
             alt="movie jpg"
           />
-        </slide>
-        <slide>
+        </div>
+        <div>
           <img
             src="https://image.tmdb.org/t/p/w500//lq68Z5htr1bjPd8X0U3PBZRcUij.jpg"
-            alt=" movie jpg"
+            alt="movie jpg"
           />
-        </slide>
-        <slide>
+        </div>
+        <div>
           <img
             src="https://image.tmdb.org/t/p/w500//ic0intvXZSfBlYPIvWXpU1ivUCO.jpg"
             alt="movie jpg"
           />
-        </slide>
-        <slide>
-          <img
-            src="https://image.tmdb.org/t/p/w500//lq68Z5htr1bjPd8X0U3PBZRcUij.jpg"
-            alt=" movie jpg"
-          />
-        </slide>
-      </carousel>
+        </div>
+      </VueSlickCarousel>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { Carousel, Slide } from "vue-carousel";
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
 export default {
-  components: {
-    Carousel,
-    Slide
-  }
+  components: { VueSlickCarousel }
 };
 </script>
 
@@ -84,10 +84,11 @@ export default {
   }
   &-right {
     width: 50%;
-    .VueCarousel-slide {
+    .slick-slide {
       img {
         width: 300px;
         height: 400px;
+        margin: 0 auto;
         border-radius: 40px;
       }
     }
