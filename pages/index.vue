@@ -21,6 +21,17 @@ body {
   margin: 0;
   padding: 0;
 }
+.VueCarousel-dot {
+  background-color: #535554 !important;
+  width: 13px;
+  height: 13px;
+  &--active {
+    background-color: #fcb124 !important;
+  }
+  &:focus {
+    outline: none !important;
+  }
+}
 body {
   background-color: #1b1d1c;
 }
