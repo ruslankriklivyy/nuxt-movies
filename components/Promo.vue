@@ -4,13 +4,17 @@
       <h1 class="promo-left__title">
         POPCORN, PLEASE!
       </h1>
-      <button class="promo-left__btn">Start Watching</button>
+      <nuxt-link to="/movies">
+        <button class="promo-left__btn">Start Watching</button></nuxt-link
+      >
     </div>
     <div class="promo-right">
       <VueSlickCarousel
         :slidesToScroll="2"
         :slidesToShow="2"
         :arrows="false"
+        :autoplay="true"
+        :speed="500"
         :dots="true"
       >
         <div>
