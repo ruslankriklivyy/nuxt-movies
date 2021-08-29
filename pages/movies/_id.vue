@@ -26,7 +26,7 @@
             Vote Count:
           </div>
           <div class="movie-right__info-box">
-            {{ movie.vote_count }}
+            {{ getCorrectNumber(movie.vote_count) }}
           </div>
         </div>
         <div class="movie-right__info">
@@ -49,7 +49,9 @@
           <div class="movie-right__info-type">
             Budget:
           </div>
-          <div class="movie-right__info-box">{{ movie.budget }}$</div>
+          <div class="movie-right__info-box">
+            {{ getCorrectNumber(movie.budget) }}$
+          </div>
         </div>
         <div class="movie-right__info">
           <div class="movie-right__info-type">
@@ -71,22 +73,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import Vue from "vue";
 import MyButton from "~/components/MyButton.vue";
 import numberConvert from "~/utils/convertNumber";
 
-export default defineComponent({
+export default Vue.extend({
   name: "Movie Page",
   components: { MyButton },
-  setup() {},
-  data() {
-    return {
-      voteCount: this.movie.vote_count
-    };
-  },
-  computed: {
-    getVoteCount: (voteCount: number) => {
-      return numberConvert(voteCount);
+  methods: {
+    getCorrectNumber(num: number): string {
+      return numberConvert(num);
     }
   },
   async asyncData({ $http, params }: any) {
@@ -94,7 +90,6 @@ export default defineComponent({
     const movie = await $http.$get(
       `https://api.themoviedb.org/3/movie/${params.id}${apiKey}`
     );
-    console.log(movie);
     return { movie };
   }
 });
