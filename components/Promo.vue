@@ -17,10 +17,10 @@
         :speed="500"
         :dots="true"
       >
-        <div v-for="item in items.results.slice(0, 4)" :key="item.id">
-          <nuxt-link :to="`/movies/${item.id}`">
+        <div v-for="movie in movies.results.slice(0, 4)" :key="movie.id">
+          <nuxt-link :to="`/movies/${movie.id}`">
             <img
-              :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`"
+              :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
               alt="movie jpg"
             />
           </nuxt-link>
@@ -31,19 +31,21 @@
 </template>
 
 <script lang="ts">
+import Vue, { PropType } from "vue";
 import VueSlickCarousel from "vue-slick-carousel";
+import { INowPlayingFilms } from "~/interfaces/interfaces";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
-export default {
+export default Vue.extend({
   components: { VueSlickCarousel },
   props: {
-    items: {
-      type: Array,
+    movies: {
+      type: Object as PropType<INowPlayingFilms>,
       required: true
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

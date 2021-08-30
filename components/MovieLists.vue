@@ -139,15 +139,18 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue, { PropType } from "vue";
+import { INowPlayingFilms } from "~/interfaces/interfaces";
+
+export default Vue.extend({
   props: {
     movies: {
-      type: Object,
+      type: Object as PropType<INowPlayingFilms>,
       required: true
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

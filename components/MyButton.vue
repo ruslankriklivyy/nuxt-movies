@@ -4,12 +4,14 @@
   </button>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue, { PropType } from "vue";
+
+export default Vue.extend({
   props: {
     showModal: {
-      type: Function,
-      required: true
+      type: Function as PropType<(visible: boolean) => void>,
+      required: false
     }
   },
   methods: {
@@ -17,7 +19,7 @@ export default {
       this.$emit("showModal");
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

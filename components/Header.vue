@@ -20,10 +20,12 @@
 </template>
 
 <script lang="ts">
+import Vue from "vue";
 import MyButton from "./MyButton.vue";
-export default {
+
+export default Vue.extend({
   components: { MyButton }
-};
+});
 </script>
 
 <style lang="scss" scoped>

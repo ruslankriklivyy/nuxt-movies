@@ -11,14 +11,17 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue, { PropType } from "vue";
+import { IGenres } from "~/interfaces/interfaces";
+
+export default Vue.extend({
   props: {
     genres: {
-      type: Object,
+      type: Object as PropType<IGenres>,
       required: true
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

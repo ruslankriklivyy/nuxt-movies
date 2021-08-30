@@ -52,11 +52,11 @@
 <script lang="ts">
 import MovieGenres from "~/components/MovieGenres.vue";
 import MovieLists from "~/components/MovieLists.vue";
+import { apiKey } from "~/utils/consts";
 
 export default {
   components: { MovieGenres, MovieLists },
   async asyncData({ $http }: any) {
-    const apiKey = "?api_key=74d41124b9d3bafd09d832463dd78216";
     const movies = await $http.$get(
       `https://api.themoviedb.org/3/movie/now_playing${apiKey}`
     );

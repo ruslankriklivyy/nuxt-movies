@@ -23,9 +23,7 @@
             :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
             alt="movie jpg"
           />
-          <my-button v-on:showModal="setIsShowModal(true)"
-            >Watch Trailer</my-button
-          >
+          <my-button :showModal="setIsShowModal(true)">Watch Trailer</my-button>
         </div>
         <div class="movie-right">
           <div class="movie-right__info">
@@ -111,6 +109,8 @@ import Vue from "vue";
 import MyButton from "~/components/MyButton.vue";
 import MyModal from "~/components/MyModal.vue";
 import numberConvert from "~/utils/convertNumber";
+import { IMovieDetails, ICredits, ITrailerById } from "~/interfaces/interfaces";
+import { apiKey } from "~/utils/consts";
 
 export default Vue.extend({
   name: "Movie Page",
@@ -129,18 +129,16 @@ export default Vue.extend({
     }
   },
   async asyncData({ $http, params }: any) {
-    const apiKey = "?api_key=74d41124b9d3bafd09d832463dd78216";
-    const movie = await $http.$get(
+    const movie: IMovieDetails = await $http.$get(
       `https://api.themoviedb.org/3/movie/${params.id}${apiKey}`
     );
-    const movieCredits = await $http.$get(
+    const movieCredits: ICredits = await $http.$get(
       `https://api.themoviedb.org/3/movie/${params.id}/credits${apiKey}`
     );
-    const movieTrailer = await $http.$get(
+    const movieTrailer: ITrailerById = await $http.$get(
       `https://api.themoviedb.org/3/movie/${params.id}/videos${apiKey}`
     );
 
-    console.log(movieTrailer);
     return { movie, movieCredits, movieTrailer };
   }
 });

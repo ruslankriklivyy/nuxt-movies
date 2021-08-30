@@ -18,11 +18,13 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue, { PropType } from "vue";
+
+export default Vue.extend({
   props: {
     setIsShowModal: {
-      type: Boolean
+      type: Function as PropType<(visible: boolean) => void>
     }
   },
   methods: {
@@ -30,7 +32,7 @@ export default {
       this.$emit("setIsShowModal");
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
