@@ -3,9 +3,19 @@
     <button
       v-for="genre in genres.genres"
       :key="genre.id"
-      class="movies-genres__item"
+      :class="
+        `${
+          +genreId !== genre.id
+            ? 'movies-genres__item'
+            : 'movies-genres__item movies-genres__item--active'
+        }`
+      "
     >
-      {{ genre.name }}
+      <nuxt-link
+        :to="`/sortby/${!sortName ? 'popularity' : sortName}/${genre.id}`"
+      >
+        {{ genre.name }}
+      </nuxt-link>
     </button>
   </div>
 </template>
@@ -19,7 +29,16 @@ export default Vue.extend({
     genres: {
       type: Object as PropType<IGenres>,
       required: true
+    },
+    sortName: {
+      type: String
+    },
+    genreId: {
+      type: String
     }
+  },
+  mounted() {
+    console.log(this.genreId);
   }
 });
 </script>
@@ -31,7 +50,6 @@ export default Vue.extend({
     align-items: center;
     flex-wrap: wrap;
     &__item {
-      padding: 10px 40px;
       margin-bottom: 15px;
       font-size: 20px;
       color: #fff;
@@ -42,6 +60,15 @@ export default Vue.extend({
       border-radius: 25px;
       margin-right: 15px;
       transition: all 0.3s ease;
+      &--active {
+        background: #fcb124;
+      }
+      a {
+        display: block;
+        padding: 10px 40px;
+        text-decoration: none;
+        color: #fff;
+      }
       &:last-child {
         margin-right: 0;
       }
