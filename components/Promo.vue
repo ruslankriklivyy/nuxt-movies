@@ -17,29 +17,13 @@
         :speed="500"
         :dots="true"
       >
-        <div>
-          <img
-            src="https://image.tmdb.org/t/p/w500//lq68Z5htr1bjPd8X0U3PBZRcUij.jpg"
-            alt="movie jpg"
-          />
-        </div>
-        <div>
-          <img
-            src="https://image.tmdb.org/t/p/w500//ic0intvXZSfBlYPIvWXpU1ivUCO.jpg"
-            alt="movie jpg"
-          />
-        </div>
-        <div>
-          <img
-            src="https://image.tmdb.org/t/p/w500//lq68Z5htr1bjPd8X0U3PBZRcUij.jpg"
-            alt="movie jpg"
-          />
-        </div>
-        <div>
-          <img
-            src="https://image.tmdb.org/t/p/w500//ic0intvXZSfBlYPIvWXpU1ivUCO.jpg"
-            alt="movie jpg"
-          />
+        <div v-for="item in items.results.slice(0, 4)" :key="item.id">
+          <nuxt-link :to="`/movies/${item.id}`">
+            <img
+              :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`"
+              alt="movie jpg"
+            />
+          </nuxt-link>
         </div>
       </VueSlickCarousel>
     </div>
@@ -52,7 +36,13 @@ import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
 export default {
-  components: { VueSlickCarousel }
+  components: { VueSlickCarousel },
+  props: {
+    items: {
+      type: Array,
+      required: true
+    }
+  }
 };
 </script>
 

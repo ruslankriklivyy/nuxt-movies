@@ -6,8 +6,10 @@
     <nav>
       <ul class="menu">
         <li class="menu__item">
-          <a href="/" class="menu__item-link">Home</a>
-          <a href="/" class="menu__item-link">Watch Movies!</a>
+          <nuxt-link to="/" class="menu__item-link">Home</nuxt-link>
+          <nuxt-link to="/movies" class="menu__item-link"
+            >Watch Movies!</nuxt-link
+          >
         </li>
       </ul>
     </nav>
