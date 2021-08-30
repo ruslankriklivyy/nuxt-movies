@@ -2,7 +2,9 @@
   <div class="container">
     <div class="movies">
       <div class="movies-head">
-        <h2 class="movies-head__title">Watch <span>Movies!</span></h2>
+        <nuxt-link to="/">
+          <h2 class="movies-head__title">Watch <span>Movies!</span></h2>
+        </nuxt-link>
         <div class="movies-head__search">
           <input type="text" placeholder="Search movie by name..." />
           <svg
@@ -72,6 +74,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    a {
+      text-decoration: none;
+    }
     &__title {
       font-weight: 700;
       font-size: 74px;

@@ -1,11 +1,23 @@
 <template>
-  <button class="btn">
+  <button class="btn" @click="handelShowModal">
     <slot></slot>
   </button>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    showModal: {
+      type: Function,
+      required: true
+    }
+  },
+  methods: {
+    handelShowModal() {
+      this.$emit("showModal");
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

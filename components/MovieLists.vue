@@ -159,12 +159,12 @@ export default {
     flex-wrap: wrap;
     margin-top: 60px;
     &__item {
-      width: 270px;
-      min-height: 410px;
+      width: 260px;
+      min-height: 400px;
       cursor: pointer;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       transition: all 0.3s ease;
-      margin-right: 10px;
+      margin-right: 20px;
       a {
         text-decoration: none;
       }
