@@ -40,11 +40,22 @@
         />
         <div class="movies-sort">
           <h4 class="movies-sort__name">Sort by:</h4>
-          <button class="movies-sort__item">
-            Latest
-          </button>
-          <button class="movies-sort__item">
-            Popular
+          <button
+            :class="
+              `${
+                sortName !== item.title
+                  ? 'movies-sort__item'
+                  : 'movies-sort__item movies-sort__item--active'
+              }`
+            "
+            v-for="item in sortByType"
+            :key="item.id"
+          >
+            <nuxt-link
+              :to="`/sortby/${item.title}/${genreId ? genreId : '28'}`"
+            >
+              {{ item.name }}
+            </nuxt-link>
           </button>
         </div>
         <movie-lists :movies="movies" />
@@ -71,6 +82,16 @@ export default Vue.extend({
     genreId: {
       type: String
     }
+  },
+  data() {
+    return {
+      sortByType: [
+        { id: 1, name: "Default", title: "popularity" },
+        { id: 2, name: "Rating", title: "vote_average" },
+        { id: 3, name: "A-Z", title: "title" },
+        { id: 4, name: "Release date", title: "release_date" }
+      ]
+    };
   }
 });
 </script>
@@ -141,9 +162,7 @@ export default Vue.extend({
       margin-right: 10px;
     }
     &__item {
-      padding: 6px 25px;
       font-size: 18px;
-      color: #fff;
       font-weight: 600;
       border: none;
       background: #171717;
@@ -151,6 +170,14 @@ export default Vue.extend({
       border-radius: 25px;
       margin-left: 10px;
       transition: all 0.3s ease;
+      &--active {
+        background: #ff3b56;
+      }
+      a {
+        padding: 6px 25px;
+        color: #fff;
+        text-decoration: none;
+      }
       &:hover {
         background: #ff3b56;
       }
