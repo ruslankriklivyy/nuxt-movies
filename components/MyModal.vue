@@ -22,14 +22,9 @@
 import Vue, { PropType } from "vue";
 
 export default Vue.extend({
-  props: {
-    setIsShowModal: {
-      type: Function as PropType<(visible: boolean) => void>
-    }
-  },
   methods: {
     cancelModal() {
-      this.$emit("setIsShowModal");
+      this.$emit("update:showModal", false);
     }
   }
 });

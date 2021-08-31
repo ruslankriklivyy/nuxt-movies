@@ -79,9 +79,10 @@ export default Vue.extend({
     }
   }
   &-right {
-    width: 50%;
+    width: 47%;
     .slick-slide {
       img {
+        display: block;
         width: 300px;
         height: 400px;
         margin: 0 auto;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <my-modal v-on:setIsShowModal="setIsShowModal(false)" v-show="isShowModal">
+    <my-modal v-bind:showModal.sync="isShowModal" v-if="isShowModal">
       <iframe
         data-frameborder="0"
         data-allowfullscreen
@@ -23,7 +23,9 @@
             :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
             alt="movie jpg"
           />
-          <my-button :showModal="setIsShowModal(true)">Watch Trailer</my-button>
+          <my-button v-bind:showModal.sync="isShowModal"
+            >Watch Trailer</my-button
+          >
         </div>
         <div class="movie-right">
           <div class="movie-right__info">
@@ -113,12 +115,14 @@ import { IMovieDetails, ICredits, ITrailerById } from "~/interfaces/interfaces";
 import { apiKey } from "~/utils/consts";
 
 export default Vue.extend({
-  name: "Movie Page",
   components: { MyButton, MyModal },
   data() {
     return {
       isShowModal: false
     };
+  },
+  mounted() {
+    console.log(this.isShowModal);
   },
   methods: {
     getCorrectNumber(num: number): string {
@@ -126,6 +130,7 @@ export default Vue.extend({
     },
     setIsShowModal(visible: boolean) {
       this.isShowModal = visible;
+      console.log("2");
     }
   },
   async asyncData({ $http, params }: any) {

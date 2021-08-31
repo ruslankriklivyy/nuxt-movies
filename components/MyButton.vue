@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" @click="handelShowModal">
+  <button class="btn" @click="handleClick">
     <slot></slot>
   </button>
 </template>
@@ -8,15 +8,9 @@
 import Vue, { PropType } from "vue";
 
 export default Vue.extend({
-  props: {
-    showModal: {
-      type: Function as PropType<(visible: boolean) => void>,
-      required: false
-    }
-  },
   methods: {
-    handelShowModal() {
-      this.$emit("showModal");
+    handleClick() {
+      this.$emit("update:showModal", true);
     }
   }
 });
