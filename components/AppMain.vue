@@ -109,16 +109,11 @@ export default Vue.extend({
   watch: {
     searchVal(value) {
       if (value !== "") {
-        return this.$router.push({ path: "/movies", query: { search: value } });
+        return this.$router.push({ query: { search: value } });
       }
-      return this.$router.push({ path: "/movies" });
+      return this.$router.push({});
     }
   }
-  // methods: {
-  //   setSearchVal() {
-  //     return this.$router.push({ path: '/movies', query: {search: this.searchVal,}})
-  //   }
-  // }
 });
 </script>
 

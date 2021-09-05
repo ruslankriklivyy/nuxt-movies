@@ -1,6 +1,19 @@
 <template>
   <div class="movies-genres">
     <button
+      :class="
+        `${
+          genreId !== undefined
+            ? 'movies-genres__item'
+            : 'movies-genres__item movies-genres__item--active'
+        }`
+      "
+    >
+      <nuxt-link to="/movies">
+        All
+      </nuxt-link>
+    </button>
+    <button
       v-for="genre in genres.genres"
       :key="genre.id"
       :class="
