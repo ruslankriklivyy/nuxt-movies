@@ -9,7 +9,7 @@
           <input
             type="text"
             placeholder="Search movie by name..."
-            v-model="searchVal"
+            v-debounce:1s="getSearchVal"
           />
           <svg
             version="1.1"
@@ -75,6 +75,8 @@
 
 <script lang="ts">
 import Vue, { PropType } from "vue";
+import { debounce } from "vue-debounce";
+
 import { INowPlayingFilms, IGenres } from "~/interfaces/interfaces";
 
 export default Vue.extend({
@@ -106,11 +108,12 @@ export default Vue.extend({
       ]
     };
   },
-  watch: {
-    searchVal(value) {
+  methods: {
+    getSearchVal(value) {
       if (value !== "") {
         return this.$router.push({ query: { search: value } });
       }
+
       return this.$router.push({});
     }
   }
