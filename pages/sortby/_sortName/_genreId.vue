@@ -30,9 +30,9 @@ export default Vue.extend({
         searchVal !== "" ? "/search" : "/discover"
       }/movie${apiKey}${
         params.genreId ? `&with_genres=${params.genreId}` : ""
-      }&sort_by=${
-        params.sortName ? params.sortName : ""
-      }.desc&page=${page}${searchVal !== "" && `&query=${searchVal}`}`
+      }&sort_by=${params.sortName ? params.sortName : ""}.desc&page=${page}${
+        searchVal !== "" ? `&query=${searchVal}` : ""
+      }`
     );
     const genres: IGenres = await $http.$get(
       `https://api.themoviedb.org/3/genre/movie/list${apiKey}`
