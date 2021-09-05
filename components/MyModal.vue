@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from "vue";
+import Vue from "vue";
 
 export default Vue.extend({
   methods: {
@@ -32,7 +32,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;

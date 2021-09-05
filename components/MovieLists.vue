@@ -139,12 +139,19 @@
       </div>
     </div>
     <div class="movies-pagination">
-      <my-button>
-        Prev Page
-      </my-button>
-      <my-button>
-        Next Page
-      </my-button>
+      <nuxt-link
+        v-if="Number(this.page) > 1"
+        :to="`/movies?page=${Number(this.page) - 1}`"
+      >
+        <my-button>
+          Prev Page
+        </my-button>
+      </nuxt-link>
+      <nuxt-link :to="`/movies?page=${Number(this.page) + 1}`">
+        <my-button>
+          Next Page
+        </my-button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -162,7 +169,7 @@ export default Vue.extend({
       required: true
     },
     page: {
-      type: Number
+      type: String
     }
   }
 });

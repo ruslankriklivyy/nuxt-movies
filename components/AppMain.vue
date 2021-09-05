@@ -58,7 +58,7 @@
             </nuxt-link>
           </button>
         </div>
-        <movie-lists :movies="movies" :page="page" />
+        <movie-lists :movies="movies" v-bind:page.sync="page" />
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@ export default Vue.extend({
       type: String
     },
     page: {
-      type: Number
+      type: String
     }
   },
   data() {
