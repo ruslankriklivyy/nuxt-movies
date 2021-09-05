@@ -49,9 +49,6 @@ export default Vue.extend({
     genreId: {
       type: String
     }
-  },
-  mounted() {
-    console.log(this.genreId);
   }
 });
 </script>

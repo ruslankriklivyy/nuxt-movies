@@ -94,7 +94,7 @@ export default Vue.extend({
       type: String
     },
     page: {
-      type: String
+      type: String || Number
     }
   },
   data() {

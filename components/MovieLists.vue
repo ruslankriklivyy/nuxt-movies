@@ -183,7 +183,7 @@ export default Vue.extend({
       required: true
     },
     page: {
-      type: String
+      type: Number || String
     },
     sortName: {
       type: String
