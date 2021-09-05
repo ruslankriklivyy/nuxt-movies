@@ -24,10 +24,15 @@ export default Vue.extend({
   },
   async asyncData({ $http, params, query }: any) {
     const page = query.page || 1;
+    const searchVal = query.search || "";
     const movies: INowPlayingFilms = await $http.$get(
-      `https://api.themoviedb.org/3/discover/movie${apiKey}${
+      `https://api.themoviedb.org/3${
+        searchVal !== "" ? "/search" : "/discover"
+      }/movie${apiKey}${
         params.genreId ? `&with_genres=${params.genreId}` : ""
-      }&sort_by=${params.sortName ? params.sortName : ""}.desc&page=${page}`
+      }&sort_by=${
+        params.sortName ? params.sortName : ""
+      }.desc&page=${page}${searchVal !== "" && `&query=${searchVal}`}`
     );
     const genres: IGenres = await $http.$get(
       `https://api.themoviedb.org/3/genre/movie/list${apiKey}`
