@@ -15,7 +15,7 @@ import { apiKey } from "~/utils/consts";
 
 export default Vue.extend({
   components: { AppMain },
-  watchQuery: ["page"],
+  watchQuery: ["page", "search"],
   watch: {
     "$route.query"() {
       this.$nuxt.refresh();
@@ -23,14 +23,16 @@ export default Vue.extend({
   },
   async asyncData({ $http, params, query }: any) {
     const page = query.page || 1;
+    const searchVal = query.search || "";
     const movies: INowPlayingFilms = await $http.$get(
-      `https://api.themoviedb.org/3/movie/now_playing${apiKey}&page=${page}`
+      `https://api.themoviedb.org/3${searchVal !== "" ? "/search" : ""}/movie${
+        searchVal !== "" ? "" : `/now_playing`
+      }${apiKey}&page=${page}${searchVal !== "" && `&query=${searchVal}`}`
     );
     const genres: IGenres = await $http.$get(
       `https://api.themoviedb.org/3/genre/movie/list${apiKey}`
     );
     const sortName = params.sortName;
-
     return { movies, genres, sortName, page };
   }
 });

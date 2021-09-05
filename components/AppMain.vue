@@ -6,7 +6,11 @@
           <h2 class="movies-head__title">Watch <span>Movies!</span></h2>
         </nuxt-link>
         <div class="movies-head__search">
-          <input type="text" placeholder="Search movie by name..." />
+          <input
+            type="text"
+            placeholder="Search movie by name..."
+            v-model="searchVal"
+          />
           <svg
             version="1.1"
             id="Capa_1"
@@ -93,6 +97,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      searchVal: "",
       sortByType: [
         { id: 1, name: "Default", title: "popularity" },
         { id: 2, name: "Rating", title: "vote_average" },
@@ -100,7 +105,20 @@ export default Vue.extend({
         { id: 4, name: "Release date", title: "release_date" }
       ]
     };
+  },
+  watch: {
+    searchVal(value) {
+      if (value !== "") {
+        return this.$router.push({ path: "/movies", query: { search: value } });
+      }
+      return this.$router.push({ path: "/movies" });
+    }
   }
+  // methods: {
+  //   setSearchVal() {
+  //     return this.$router.push({ path: '/movies', query: {search: this.searchVal,}})
+  //   }
+  // }
 });
 </script>
 
