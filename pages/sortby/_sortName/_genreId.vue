@@ -4,6 +4,7 @@
     :genres="genres"
     :sortName="sortName"
     :genreId="genreId"
+    :page="page"
   />
 </template>
 
@@ -15,11 +16,18 @@ import { apiKey } from "~/utils/consts";
 
 export default Vue.extend({
   components: { AppMain },
-  async asyncData({ $http, params }: any) {
+  watchQuery: ["page"],
+  watch: {
+    "$route.query"() {
+      this.$nuxt.refresh();
+    }
+  },
+  async asyncData({ $http, params, query }: any) {
+    const page = query.page || 1;
     const movies: INowPlayingFilms = await $http.$get(
       `https://api.themoviedb.org/3/discover/movie${apiKey}${
         params.genreId ? `&with_genres=${params.genreId}` : ""
-      }&sort_by=${params.sortName ? params.sortName : ""}.desc`
+      }&sort_by=${params.sortName ? params.sortName : ""}.desc&page=${page}`
     );
     const genres: IGenres = await $http.$get(
       `https://api.themoviedb.org/3/genre/movie/list${apiKey}`
@@ -27,7 +35,7 @@ export default Vue.extend({
     const sortName = params.sortName;
     const genreId = params.genreId;
 
-    return { movies, genres, sortName, genreId };
+    return { movies, genres, sortName, genreId, page };
   }
 });
 </script>

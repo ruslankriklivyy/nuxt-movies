@@ -141,13 +141,27 @@
     <div class="movies-pagination">
       <nuxt-link
         v-if="Number(this.page) > 1"
-        :to="`/movies?page=${Number(this.page) - 1}`"
+        :to="
+          `${
+            !this.sortName
+              ? `/movies?page=${Number(this.page) - 1}`
+              : `/sortby/${sortName}/${genreId}?page=${Number(this.page) - 1}`
+          }`
+        "
       >
         <my-button>
           Prev Page
         </my-button>
       </nuxt-link>
-      <nuxt-link :to="`/movies?page=${Number(this.page) + 1}`">
+      <nuxt-link
+        :to="
+          `${
+            !this.sortName
+              ? `/movies?page=${Number(this.page) + 1}`
+              : `/sortby/${sortName}/${genreId}?page=${Number(this.page) + 1}`
+          }`
+        "
+      >
         <my-button>
           Next Page
         </my-button>
@@ -169,6 +183,12 @@ export default Vue.extend({
       required: true
     },
     page: {
+      type: String
+    },
+    sortName: {
+      type: String
+    },
+    genreId: {
       type: String
     }
   }

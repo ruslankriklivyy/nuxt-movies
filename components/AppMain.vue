@@ -58,7 +58,12 @@
             </nuxt-link>
           </button>
         </div>
-        <movie-lists :movies="movies" v-bind:page.sync="page" />
+        <movie-lists
+          :movies="movies"
+          :sortName="sortName"
+          :genreId="genreId"
+          v-bind:page.sync="page"
+        />
       </div>
     </div>
   </div>
