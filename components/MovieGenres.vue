@@ -59,6 +59,9 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    @media (max-width: 778px) {
+      justify-content: center;
+    }
     &__item {
       margin-bottom: 15px;
       font-size: 20px;
@@ -70,6 +73,11 @@ export default Vue.extend({
       border-radius: 25px;
       margin-right: 15px;
       transition: all 0.3s ease;
+      @media (max-width: 565px) {
+        font-size: 14px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
       &--active {
         background: #fcb124;
       }
@@ -78,6 +86,9 @@ export default Vue.extend({
         padding: 10px 40px;
         text-decoration: none;
         color: #fff;
+        @media (max-width: 565px) {
+          padding: 8px 20px;
+        }
       }
       &:last-child {
         margin-right: 0;

@@ -173,6 +173,9 @@ export default Vue.extend({
   }
   &-right {
     margin-left: 150px;
+    @media (max-width: 992px) {
+      margin-left: 50px;
+    }
     &__info {
       display: flex;
       align-items: center;

@@ -126,6 +126,9 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 778px) {
+      flex-direction: column;
+    }
     a {
       text-decoration: none;
     }
@@ -135,6 +138,12 @@ export default Vue.extend({
       margin: 0;
       color: #fcb124;
       text-transform: uppercase;
+      @media (max-width: 992px) {
+        font-size: 46px;
+      }
+      @media (max-width: 565px) {
+        font-size: 36px;
+      }
       span {
         color: #ff3b56;
       }
@@ -143,6 +152,13 @@ export default Vue.extend({
       position: relative;
       width: 350px;
       height: 45px;
+      @media (max-width: 778px) {
+        margin-top: 30px;
+        width: 80%;
+      }
+      @media (max-width: 565px) {
+        width: 100%;
+      }
       input {
         width: 100%;
         height: 100%;
@@ -179,11 +195,19 @@ export default Vue.extend({
   &-sort {
     margin-top: 60px;
     display: flex;
+    flex-wrap: wrap;
+    @media (max-width: 778px) {
+      margin-top: 30px;
+      flex-direction: column;
+    }
     &__name {
       font-size: 25px;
       margin: 0;
       color: #555e68;
       margin-right: 10px;
+      @media (max-width: 778px) {
+        text-align: center;
+      }
     }
     &__item {
       font-size: 18px;
@@ -194,6 +218,13 @@ export default Vue.extend({
       border-radius: 25px;
       margin-left: 10px;
       transition: all 0.3s ease;
+      @media (max-width: 778px) {
+        width: 200px;
+        margin: 5px auto;
+      }
+      @media (max-width: 565px) {
+        font-size: 14px;
+      }
       &--active {
         background: #ff3b56;
       }
@@ -201,6 +232,10 @@ export default Vue.extend({
         padding: 6px 25px;
         color: #fff;
         text-decoration: none;
+        @media (max-width: 565px) {
+          display: block;
+          padding: 6px 20px;
+        }
       }
       &:hover {
         background: #ff3b56;

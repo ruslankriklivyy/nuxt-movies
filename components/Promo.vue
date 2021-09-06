@@ -16,6 +16,15 @@
         :autoplay="true"
         :speed="500"
         :dots="true"
+        :responsive="[
+          {
+            breakpoint: 565,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]"
       >
         <div v-for="movie in movies.results.slice(0, 4)" :key="movie.id">
           <nuxt-link :to="`/movies/${movie.id}`">
@@ -52,15 +61,31 @@ export default Vue.extend({
 .promo {
   display: flex;
   padding-top: 120px;
-
+  flex-wrap: wrap;
+  @media (max-width: 1400px) {
+    flex-direction: column-reverse;
+  }
+  @media (max-width: 992px) {
+    padding-top: 60px;
+  }
   &-left {
     width: 50%;
+    @media (max-width: 1400px) {
+      width: 100%;
+      text-align: center;
+    }
     &__title {
       font-weight: 700;
       line-height: 1.1;
       font-size: 106px;
       color: #fcb124;
       margin-bottom: 40px;
+      @media (max-width: 992px) {
+        font-size: 68px;
+      }
+      @media (max-width: 565px) {
+        font-size: 48px;
+      }
     }
     &__btn {
       padding: 8px 45px;
@@ -80,6 +105,13 @@ export default Vue.extend({
   }
   &-right {
     width: 47%;
+    @media (max-width: 1400px) {
+      width: 70%;
+      margin: 0 auto 50px auto;
+    }
+    @media (max-width: 992px) {
+      width: 90%;
+    }
     .slick-slide {
       img {
         display: block;
@@ -87,6 +119,10 @@ export default Vue.extend({
         height: 400px;
         margin: 0 auto;
         border-radius: 40px;
+        @media (max-width: 778px) {
+          width: 230px;
+          height: 300px;
+        }
       }
     }
   }

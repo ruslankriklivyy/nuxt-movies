@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from "vue";
+import Vue from "vue";
 import AppMain from "~/components/AppMain.vue";
 import { IGenres, INowPlayingFilms } from "~/interfaces/interfaces";
 import { apiKey } from "~/utils/consts";

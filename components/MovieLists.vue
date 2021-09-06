@@ -141,6 +141,7 @@
     <div class="movies-pagination">
       <nuxt-link
         v-if="Number(this.page) > 1"
+        class="movies-pagination__prev-btn"
         :to="
           `${
             !this.sortName
@@ -203,6 +204,13 @@ export default Vue.extend({
     align-items: center;
     margin-top: 10px;
     margin-bottom: 20px;
+    @media (max-width: 565px) {
+      justify-content: center;
+      flex-direction: column;
+      &__prev-btn {
+        margin-bottom: 15px;
+      }
+    }
   }
   &-lists {
     display: flex;
@@ -210,6 +218,12 @@ export default Vue.extend({
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 60px;
+    @media (max-width: 778px) {
+      margin-top: 40px;
+    }
+    @media (max-width: 565px) {
+      justify-content: center;
+    }
     &__item {
       width: 260px;
       min-height: 400px;
@@ -217,6 +231,13 @@ export default Vue.extend({
       margin-bottom: 20px;
       transition: all 0.3s ease;
       margin-right: 20px;
+      @media (max-width: 778px) {
+        margin-right: 0;
+      }
+      @media (max-width: 565px) {
+        width: 280px;
+        height: 420px;
+      }
       a {
         text-decoration: none;
       }

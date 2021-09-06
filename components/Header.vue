@@ -34,6 +34,9 @@ export default Vue.extend({
   align-items: center;
   justify-content: space-between;
   padding-top: 20px;
+  @media (max-width: 778px) {
+    flex-direction: column;
+  }
   &-logo {
     img {
       width: 100%;
@@ -43,6 +46,9 @@ export default Vue.extend({
   .menu {
     display: flex;
     align-items: center;
+    @media (max-width: 778px) {
+      margin-bottom: 30px;
+    }
     &__item {
       &-link {
         color: #fcb124;
