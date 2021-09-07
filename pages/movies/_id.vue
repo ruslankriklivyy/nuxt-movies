@@ -153,11 +153,26 @@ export default Vue.extend({
 .movie {
   display: flex;
   align-items: center;
+  @media (max-width: 778px) {
+    flex-direction: column;
+    justify-content: center;
+    button {
+      margin: 0 auto 20px auto;
+      display: block;
+    }
+  }
   &-name {
     font-weight: 700;
     font-size: 70px;
     color: #d3d3d3;
     margin-bottom: 20px;
+    @media (max-width: 778px) {
+      font-size: 56px;
+      text-align: center;
+    }
+    @media (max-width: 565px) {
+      font-size: 48px;
+    }
   }
   &-left {
     &__poster {
@@ -166,6 +181,10 @@ export default Vue.extend({
       height: 480px;
       border-radius: 40px;
       margin-bottom: 30px;
+      @media (max-width: 565px) {
+        width: 300px;
+        height: 420px;
+      }
     }
     .btn {
       padding: 10px 40px;
@@ -176,10 +195,16 @@ export default Vue.extend({
     @media (max-width: 992px) {
       margin-left: 50px;
     }
+    @media (max-width: 778px) {
+      margin-left: 0;
+    }
     &__info {
       display: flex;
       align-items: center;
       margin-bottom: 12px;
+      @media (max-width: 778px) {
+        justify-content: center;
+      }
       &-type {
         color: #d3d3d3;
         font-size: 22px;

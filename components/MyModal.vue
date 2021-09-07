@@ -61,11 +61,26 @@ export default Vue.extend({
     transform: translate(-50%, -50%);
     width: 900px;
     height: 600px;
+    @media (max-width: 992px) {
+      width: 80%;
+      height: 400px;
+    }
+    @media (max-width: 565px) {
+      width: 95%;
+      height: 350px;
+    }
 
     iframe {
       width: 900px;
       height: 600px;
       border: none;
+      @media (max-width: 992px) {
+        width: 100%;
+        height: 400px;
+      }
+      @media (max-width: 565px) {
+        height: 350px;
+      }
     }
   }
 }
