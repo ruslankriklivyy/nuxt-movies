@@ -78,6 +78,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .sign-in {
   padding: 0 15px;
+
   h4 {
     color: #fff;
     font-size: 35px;
@@ -85,6 +86,11 @@ export default Vue.extend({
   }
   button {
     margin-top: 40px;
+  }
+  @media (max-width: 992px) {
+    button {
+      margin-top: 20px;
+    }
   }
 }
 .form {

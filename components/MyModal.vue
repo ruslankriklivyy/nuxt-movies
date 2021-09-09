@@ -84,6 +84,14 @@ export default Vue.extend({
       background: #000;
       border-radius: 15px;
       overflow: hidden;
+      @media (max-width: 992px) {
+        width: 80%;
+        height: 400px;
+      }
+      @media (max-width: 565px) {
+        width: 95%;
+        height: 350px;
+      }
     }
     iframe {
       width: 900px;
