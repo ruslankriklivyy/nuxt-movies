@@ -75,8 +75,6 @@
 
 <script lang="ts">
 import Vue, { PropType } from "vue";
-import { debounce } from "vue-debounce";
-
 import { INowPlayingFilms, IGenres } from "~/interfaces/interfaces";
 
 export default Vue.extend({

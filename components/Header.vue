@@ -1,5 +1,12 @@
 <template>
   <header class="header">
+    <my-modal
+      :modalForm="true"
+      v-bind:showModal.sync="isShowModal"
+      v-if="isShowModal"
+    >
+      <my-form />
+    </my-modal>
     <a href="/" class="header-logo">
       <img src="~/static/logo.png" alt="logo png" />
     </a>
@@ -13,7 +20,7 @@
         </li>
       </ul>
     </nav>
-    <my-button>
+    <my-button v-bind:showModal.sync="isShowModal">
       Login
     </my-button>
   </header>
@@ -22,9 +29,21 @@
 <script lang="ts">
 import Vue from "vue";
 import MyButton from "./MyButton.vue";
+import MyForm from "./MyForm.vue";
+import MyModal from "./MyModal.vue";
 
 export default Vue.extend({
-  components: { MyButton }
+  components: { MyButton, MyModal, MyForm },
+  data() {
+    return {
+      isShowModal: false
+    };
+  },
+  methods: {
+    setIsShowModal(visible: boolean) {
+      this.isShowModal = visible;
+    }
+  }
 });
 </script>
 

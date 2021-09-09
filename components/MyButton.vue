@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" @click="handleClick">
+  <button class="btn" type="type" @click="handleClick">
     <slot></slot>
   </button>
 </template>
@@ -8,6 +8,12 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  props: {
+    type: {
+      type: String,
+      required: false
+    }
+  },
   methods: {
     handleClick() {
       this.$emit("update:showModal", true);

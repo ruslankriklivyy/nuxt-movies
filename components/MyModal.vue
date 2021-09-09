@@ -1,6 +1,10 @@
 <template>
   <div class="modal">
-    <div class="modal-content">
+    <div
+      :class="
+        `${!modalForm ? 'modal-content' : 'modal-content modal-content--form'}`
+      "
+    >
       <button class="modal-btn__close" @click="cancelModal">
         <svg
           height="329pt"
@@ -22,6 +26,11 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  props: {
+    modalForm: {
+      type: Boolean
+    }
+  },
   methods: {
     cancelModal() {
       this.$emit("update:showModal", false);
@@ -69,7 +78,13 @@ export default Vue.extend({
       width: 95%;
       height: 350px;
     }
-
+    &--form {
+      width: 500px;
+      height: 360px;
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+    }
     iframe {
       width: 900px;
       height: 600px;

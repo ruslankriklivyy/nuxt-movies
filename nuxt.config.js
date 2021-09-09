@@ -18,7 +18,7 @@ export default {
   css: ["~/styles/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["~/plugins/vue-tooltip.js"],
+  plugins: [{ src: "~/plugins/vee-validate.ts", ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

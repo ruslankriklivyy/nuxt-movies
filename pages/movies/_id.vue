@@ -121,16 +121,12 @@ export default Vue.extend({
       isShowModal: false
     };
   },
-  mounted() {
-    console.log(this.isShowModal);
-  },
   methods: {
     getCorrectNumber(num: number): string {
       return numberConvert(num);
     },
     setIsShowModal(visible: boolean) {
       this.isShowModal = visible;
-      console.log("2");
     }
   },
   async asyncData({ $http, params }: any) {
